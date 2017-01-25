@@ -72,14 +72,19 @@ function validateForm(siteName, siteUrl) {
   let regex = new RegExp(expression);
 
   if(!siteName || !siteUrl) {
-    alert("Please fill the form");
+    errorPopup("Please fill the form");
     return false;
   }
 
   if(!siteUrl.match(regex)) {
-    alert("Please use a valid url");
+    errorPopup("Please use a valid url");
     return false;
   }
 
   return true;
+}
+
+function errorPopup(text) {
+  $("#popupBody").text(text);
+  $("#popup").modal("show");
 }
